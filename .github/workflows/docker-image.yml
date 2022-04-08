@@ -56,10 +56,9 @@ jobs:
 
           echo VERSION=$VERSION
 
-          echo APP_VERSION=$VERSION >> $GITHUB_ENV
+          echo "APP_VERSION=$VERSION" >> $GITHUB_ENV
 
           echo VERSION=$VERSION
-          echo APP_VERSION=$APP_VERSION
         # echo APP_VERSION=`git describe --tags --always` >> $GITHUB_ENV
       # 构建 Docker 并推送到 Docker hub
       - name: Build and push
@@ -75,6 +74,8 @@ jobs:
             linux/arm/v6
             linux/arm/v7
             linux/arm64/v8
+          run: |
+            echo app_version=${{ env.APP_VERSION }}
           # docker build arg, 注入 APP_NAME/APP_VERSION
           build-args: |
             APP_NAME=${{ env.APP_NAME }}
