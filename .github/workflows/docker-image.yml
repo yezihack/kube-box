@@ -1,14 +1,21 @@
 name: Docker Image CI
 
-on:
+on:   # 配置触发workflow的事件
   push:
-    branches: [ master ]
+    branches:   # master分支有push时触发此workflow
+      - 'master'
+    tags:       # tag更新时触发此workflow
+      - '*'
   pull_request:
     branches: [ master ]
 
+# 定义环境变量, 后面会使用
+# 定义 APP_NAME 用于 docker build-args
+# 定义 DOCKERHUB_REPO 标记 docker hub repo 名称
 env:
   # 设置 docker 镜像名
-  IMAGE_NAME: kube-box
+  APP_NAME: kube-box
+  DOCKERHUB_REPO: sgfoot/kube-box
 
 jobs:
 
