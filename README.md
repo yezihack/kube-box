@@ -1,3 +1,5 @@
+[![Docker Image CI](https://github.com/yezihack/kube-box/actions/workflows/docker-image.yml/badge.svg)](https://github.com/yezihack/kube-box/actions/workflows/docker-image.yml)
+
 # checkbox
 
 > 专于诊断网络使用的
