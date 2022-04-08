@@ -10,8 +10,8 @@ import (
 )
 
 func TestPingIPNet(t *testing.T) {
-	Convey("127.0.0.1", t, func() {
-		ok, stats, err := PingNetwork("127.0.0.1")
+	Convey("www.bing.com", t, func() {
+		ok, stats, err := PingNetwork("www.bing.com")
 		So(err, ShouldBeNil)
 		So(ok, ShouldBeTrue)
 		fmt.Printf("最大耗时:%s\n", stats.MaxRtt)
@@ -21,13 +21,6 @@ func TestPingIPNet(t *testing.T) {
 		ok, stats, err := PingNetwork("www.baidu.com")
 		So(err, ShouldBeNil)
 		So(ok, ShouldBeTrue)
-		fmt.Printf("最大耗时:%d 毫秒\n", stats.MaxRtt.Milliseconds())
-		fmt.Printf("%+v\n", stats)
-	})
-	Convey("www.google.com", t, func() {
-		ok, stats, err := PingNetwork("www.google.com")
-		So(err, ShouldBeNil)
-		So(ok, ShouldBeFalse)
 		fmt.Printf("最大耗时:%d 毫秒\n", stats.MaxRtt.Milliseconds())
 		fmt.Printf("%+v\n", stats)
 	})

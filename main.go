@@ -9,6 +9,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var (
+	version = internal.DefaultVersion
+)
+
 func main() {
 	log.SetFlags(log.Lshortfile | log.LstdFlags)
 

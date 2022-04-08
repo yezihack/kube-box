@@ -19,7 +19,7 @@ func TestCheck_IPNetPool(t *testing.T) {
 			ck := Check{
 				FilePath:        "../data/ip.data",
 				Timeout:         time.Second * 3,
-				NetworkCardName: "WLAN",
+				NetworkCardName: "eth1",
 			}
 			result, err := ck.IPNetPool()
 			So(err, ShouldBeNil)
@@ -37,7 +37,7 @@ func TestCheck_IPHealthzPool(t *testing.T) {
 			ck := Check{
 				FilePath:        "../data/ip.data",
 				Timeout:         time.Second * 3,
-				NetworkCardName: "WLAN",
+				NetworkCardName: "eth1",
 			}
 			result, err := ck.IPHealthzPool(80, "healthz")
 			So(err, ShouldBeNil)
