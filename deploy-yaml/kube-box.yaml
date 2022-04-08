@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kube-box
+  namespace: default
+  labels:
+    app: kube-box
+spec:
+  selector:
+    matchLabels:
+      app: kube-box
+  template:
+    metadata:
+      labels:
+        app: kube-box
+    spec:
+      tolerations:
+      # this toleration is to have the daemonset runnable on master nodes
+      # remove it if your masters can't run pods
+      - key: node-role.kubernetes.io/master
+        effect: NoSchedule
+      containers:
+      - name: kube-box
+        image: kube-box:v0.0.1
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: portbox
+            containerPort: 9110
+            protocol: TCP 
+        env:
+          - name: VERSION
+            value: "v0.0.3"
+          - name: PORT
+            value: "9110"
+          - name: TARGET_PORT
+            value: "9110"
+          - name: DATA_PATH
+            value: "/work/data/"
+          - name: IP_DATA_FILENAME
+            value: "ip.data"
+          - name: NETWORK_NAME
+            value: "eth0"
+          - name: GO_NUMBER
+            value: "12"
+          - name: TIMEOUT
+            value: "3"
+          - name: HEALTHZ_PATH_NAME
+            value: "healthz"
+        resources:
+          limits:
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        volumeMounts:
+        - name: ipdata # volumes.name 名称一致
+          mountPath: /work/data/ip.data # 落盘的文件名称
+          subPath: ipdata
+      volumes: # 挂载配置
+      - name: ipdata # ip 数据表格
+        configMap:
+          name: kube-box-ipdata # configmap.name
