@@ -18,11 +18,17 @@ func Home(ctx *gin.Context) {
 	})
 }
 func Ping(ctx *gin.Context) {
-	ctx.JSON(200, PING)
+	ctx.JSON(200, &ResponseEntity{
+		Code:    CodeOk,
+		Message: PING,
+	})
 }
 
 func Healthz(ctx *gin.Context) {
-	ctx.JSON(200, HEALTHZOK)
+	ctx.JSON(200, &ResponseEntity{
+		Code:    CodeOk,
+		Message: HEALTHZOK,
+	})
 }
 
 // 检查 ip 是否通达
