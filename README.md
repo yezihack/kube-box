@@ -1,10 +1,38 @@
 [![Docker Image CI](https://github.com/yezihack/kube-box/actions/workflows/docker-image.yml/badge.svg)](https://github.com/yezihack/kube-box/actions/workflows/docker-image.yml)
+<!-- TOC -->
 
-# checkbox
+- [1. kube-box](#1-kube-box)
+  - [1.1. 部署使用](#11-部署使用)
+  - [1.2. 镜像选择](#12-镜像选择)
+  - [1.3. 接口介绍](#13-接口介绍)
+  - [1.4. 环境变量](#14-环境变量)
+  - [1.5. 运行测试](#15-运行测试)
+
+<!-- /TOC -->
+
+# 1. kube-box
 
 > 专于诊断网络使用的
 
-## 接口
+## 1.1. 部署使用
+
+两种使用方法，一种是使用 DeamonSet, 一种是 Deployment
+
+- [DeamonSet 清单](mainfest/kube-box-ds.yaml)
+  - 用于诊断整个集群的网络通达
+- [Deployment 清单](mainfest/kube-box.yaml)
+  - 用于单个应用的测试与调试使用
+
+## 1.2. 镜像选择
+
+<https://hub.docker.com/r/sgfoot/kube-box/tags>
+
+```sh
+# 最新版本
+docker pull sgfoot/kube-box:latest
+```
+
+## 1.3. 接口介绍
 
 > 默认80端口
 
@@ -18,7 +46,7 @@
 |5   |/check-healthz| 检查健康接口是否通达
 |5   |/dry-check-healthz| 检查健康接口是否通达，只返回失败的,
 
-## 环境变量
+## 1.4. 环境变量
 
 | 名称 | 默认值 | 说明  |
 | ---- | ----- | ----- |
@@ -32,7 +60,7 @@
 |TIMEOUT | 5 | 请求超时，单位秒（s）
 |HEALTHZ_PATH_NAME| healthz| 健康接口地址
 
-## 运行测试
+## 1.5. 运行测试
 
 - windown
 
