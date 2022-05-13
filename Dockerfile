@@ -22,11 +22,8 @@ RUN go build -tags=jsoniter -ldflags "-s -w" -o kube-box .
 # FROM vukomir/busybox as runner
 # FROM tianon/toybox as runner
 # FROM busybox:latest as runner
-FROM sgfoot/busybox:v0.0.1 as runner
-# FROM bash:latest as runner
-# FROM centos:7 as runner
-# FROM hello-world as runner
-
+# FROM sgfoot/busybox:v0.0.1 as runner
+FROM sgfoot/busybox:v0.1.1 as runner
 
 WORKDIR /work
 
