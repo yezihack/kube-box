@@ -7,9 +7,9 @@ const (
 
 // 默认值
 const (
+	DefaultVersion         = "v0.1.2"  // 版本号 默认值
 	DefaultPort            = 80        // 端口 默认值
 	DefaultTargetPort      = 80        // 目标端口，默认值
-	DefaultVersion         = "v0.0.1"  // 版本号 默认值
 	DefaultDataPath        = "./data/" // 数据存储目录路径 默认值
 	DefaultIpDataFileName  = "ip.data" // ip数据文件名 默认值
 	DefaultNetworkName     = "eth0"    // 网卡名称 默认值
