@@ -7,6 +7,7 @@
   - [1.3. 接口介绍](#13-接口介绍)
   - [1.4. 环境变量](#14-环境变量)
   - [1.5. 运行测试](#15-运行测试)
+  - [1.6. 添加 metrics 接口](#16-添加-metrics-接口)
 
 <!-- /TOC -->
 
@@ -42,9 +43,10 @@ docker pull sgfoot/kube-box:latest
 | 2    | /ping    | 存活检测接口  |
 | 3    | /healthz   |  健康接口|
 |4  |  /check-ip | 检查IP是否通达
-|4  |  /dry-check-ip | 检查IP是否通达，只返回失败的
-|5   |/check-healthz| 检查健康接口是否通达
-|5   |/dry-check-healthz| 检查健康接口是否通达，只返回失败的,
+|5  |  /dry-check-ip | 检查IP是否通达，只返回失败的
+|6   |/check-healthz| 检查健康接口是否通达
+|7   |/dry-check-healthz| 检查健康接口是否通达，只返回失败的
+|8   |/metrics| prometheus metrics infomation
 
 ## 1.4. 环境变量
 
@@ -77,4 +79,18 @@ go run .
 export DATA_PATH="./data/"
 export NETWORK_NAME="WLAN"
 go run .
+```
+
+## 1.6. 添加 metrics 接口
+
+> 用于接入 prometheus 监控使用。
+
+访问方法：<http://localhost:80/metrics>
+
+```sh
+# 统计接口访问状态次数。如 200 表示成功次数为 10 次，404表示未找到页面 7 次。
+# HELP kubebox_requests_total Number of the http requests received since the server started
+# TYPE kubebox_requests_total counter
+kubebox_requests_total{status="200"} 10
+kubebox_requests_total{status="404"} 7
 ```

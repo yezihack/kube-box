@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.2.0
+
+- 添加 metrics 接口，用于接入 prometheus 监控使用。
+
 ## v0.1.0
 
 - 基础镜像替换为 sgfoot/busybox:v0.1.1

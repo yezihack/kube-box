@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func Home(ctx *gin.Context) {
@@ -16,6 +17,7 @@ func Home(ctx *gin.Context) {
 		Version: GetEnvValue(EnvVersion, DefaultVersion),
 		Date:    time.Now().Format(YYYYFormat),
 	})
+
 }
 func Ping(ctx *gin.Context) {
 	ctx.JSON(200, &ResponseEntity{
@@ -29,6 +31,11 @@ func Healthz(ctx *gin.Context) {
 		Code:    CodeOk,
 		Message: HEALTHZOK,
 	})
+}
+
+// prometheus metrics
+func Metrics(ctx *gin.Context) {
+	promhttp.Handler().ServeHTTP(ctx.Writer, ctx.Request)
 }
 
 // 检查 ip 是否通达
