@@ -1,5 +1,22 @@
 [![Docker Image CI](https://github.com/yezihack/kube-box/actions/workflows/docker-image.yml/badge.svg)](https://github.com/yezihack/kube-box/actions/workflows/docker-image.yml)
+<!-- TOC -->
 
+- [1. kube-box](#1-kube-box)
+  - [1.1. 特色](#11-特色)
+  - [1.2. 部署使用](#12-部署使用)
+    - [1.2.1. Kubenetes 部署](#121-kubenetes-部署)
+    - [1.2.2. Docker 部署](#122-docker-部署)
+  - [1.3. 镜像选择](#13-镜像选择)
+  - [1.4. 接口介绍](#14-接口介绍)
+  - [1.5. 环境变量](#15-环境变量)
+  - [1.6. 运行测试](#16-运行测试)
+  - [1.7. 添加 metrics 接口](#17-添加-metrics-接口)
+  - [1.8. 检查数据库](#18-检查数据库)
+    - [1.8.1. 参数说明](#181-参数说明)
+  - [1.9. 创建数据库](#19-创建数据库)
+    - [1.9.1. 参数说明](#191-参数说明)
+
+<!-- /TOC -->
 # 1. kube-box
 
 > 专于诊断网络使用的
@@ -113,7 +130,6 @@ kubebox_requests_total{status="404"} 7
 - port 端口号，必须整型
 - user 用户名称
 - pass 用户密码
-- dbname 需要创建的数据库名称
 
 例：
 
