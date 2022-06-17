@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-ping/ping v0.0.0-20211130115550-779d1e919534
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/ivpusic/grpool v1.0.0
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.12.2

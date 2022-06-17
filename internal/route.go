@@ -29,4 +29,6 @@ func AddRoute(r *gin.Engine) {
 	r.GET("/dry-check-ip", DryCheckIP)
 	r.GET("/check-healthz", CheckHealthz)
 	r.GET("/dry-check-healthz", DryCheckHealthz)
+	r.GET("/check-mysql", CheckMySQLConnect)
+	r.GET("/create-mysql-db", CreateMySQLDB)
 }

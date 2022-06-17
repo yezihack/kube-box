@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.3.0
+
+- 添加 /check-mysql 检查 MySQL 连接状态
+- 添加 /create-mysql-db 创建 MySQL 新的数据库
+
 ## v0.2.0
 
 - 添加 metrics 接口，用于接入 prometheus 监控使用。

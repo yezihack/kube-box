@@ -3,6 +3,7 @@ package internal
 type ResponseEntity struct {
 	Code    int    `json:"code,omitempty"`
 	Message string `json:"message,omitempty"`
+	Err     error  `json:"err,omitempty"`
 }
 type HomeEntity struct {
 	Date    string `json:"date,omitempty"`

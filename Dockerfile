@@ -16,13 +16,6 @@ COPY . .
 
 RUN go build -tags=jsoniter -ldflags "-s -w" -o kube-box .
 
-
-# FROM alpine:3.15.0 as runner
-# FROM busybox:1.35.0 as runner
-# FROM vukomir/busybox as runner
-# FROM tianon/toybox as runner
-# FROM busybox:latest as runner
-# FROM sgfoot/busybox:v0.0.1 as runner
 FROM sgfoot/busybox:v0.1.1 as runner
 
 WORKDIR /work
