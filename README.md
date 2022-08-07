@@ -30,6 +30,7 @@
 - 检查 MySQL 连接状态
 - 创建 MySQL 新的数据库
 - 提供 Prometheus metrics 数据
+- 添加 [httpstat](https://github.com/davecheney/httpstat) 分析URL请求不同阶段的耗时
 
 ## 1.2. 部署使用
 
@@ -154,3 +155,4 @@ curl localhost/check-mysql?host=127.0.0.1&port=3306&user=root&pass=123456
 ```sh
 curl localhost/create-mysql-db?host=127.0.0.1&port=3306&user=root&pass=123456&dbname=test
 ```
+

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.4.0
+
+- 添加 [httpstat](https://github.com/davecheney/httpstat) 分析URL请求不同阶段的耗时
+
 ## v0.3.0
 
 - 添加 /check-mysql 检查 MySQL 连接状态
