@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.5.0
+
+- 添加 [nali](https://github.com/zu1k/nali) 一个查询IP地理信息和CDN提供商的离线终端工具.
+
 ## v0.4.0
 
 - 添加 [httpstat](https://github.com/davecheney/httpstat) 分析URL请求不同阶段的耗时

@@ -31,6 +31,7 @@
 - 创建 MySQL 新的数据库
 - 提供 Prometheus metrics 数据
 - 添加 [httpstat](https://github.com/davecheney/httpstat) 分析URL请求不同阶段的耗时
+- 添加 [nali](https://github.com/zu1k/nali) 一个查询IP地理信息和CDN提供商的离线终端工具.
 
 ## 1.2. 部署使用
 

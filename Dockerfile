@@ -1,4 +1,5 @@
-FROM golang:1.17.8-alpine as builder
+# FROM golang:1.17.8-alpine as builder
+FROM golang:1.19.0-alpine as builder
 
 WORKDIR /work
 
@@ -18,6 +19,7 @@ RUN go build -tags=jsoniter -ldflags "-s -w" -o kube-box .
 
 # 添加额外的工具包
 RUN go install github.com/davecheney/httpstat@latest
+RUN go install github.com/zu1k/nali@latest
 
 FROM sgfoot/busybox:v0.1.1 as runner
 
@@ -31,6 +33,11 @@ ENV DATA_PATH="/work/data/"
 
 COPY --from=builder /work/kube-box /work/bin/
 COPY --from=builder /work/data/ip.data /work/data/
+
+# 复制工具包文件
 COPY --from=builder /go/bin/httpstat /usr/local/bin/
+COPY --from=builder /go/bin/nali /usr/local/bin/
+
+RUN nali update
 
 ENTRYPOINT ["/work/bin/kube-box"]
