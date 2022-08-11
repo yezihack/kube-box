@@ -156,4 +156,3 @@ curl localhost/check-mysql?host=127.0.0.1&port=3306&user=root&pass=123456
 ```sh
 curl localhost/create-mysql-db?host=127.0.0.1&port=3306&user=root&pass=123456&dbname=test
 ```
-
