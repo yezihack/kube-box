@@ -1,27 +1,18 @@
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: kube-box-ipdata
-  namespace: dev
-data:
-  data-list: |-
-    127.0.0.1
----
 apiVersion: apps/v1
-kind: DaemonSet
+kind: Deployment
 metadata:
-  name: kube-box-ds
+  name: kube-box-nodeport
   namespace: default
   labels:
-    app: kube-box-ds
+    app: kube-box-nodeport
 spec:
   selector:
     matchLabels:
-      app: kube-box-ds
+      app: kube-box-nodeport
   template:
     metadata:
       labels:
-        app: kube-box-ds
+        app: kube-box-nodeport
     spec:
       tolerations:
       # this toleration is to have the daemonset runnable on master nodes
@@ -29,16 +20,16 @@ spec:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
       containers:
-      - name: kube-box
+      - name: client
         image: sgfoot/kube-box:latest
         imagePullPolicy: IfNotPresent
         ports:
-          - name: portbox
+          - name: http
             containerPort: 9110
             protocol: TCP 
         env:
           - name: VERSION
-            value: "v0.0.3"
+            value: "v0.0.1"
           - name: PORT
             value: "9110"
           - name: TARGET_PORT
@@ -57,18 +48,27 @@ spec:
             value: "healthz"
         resources:
           limits:
+            cpu: 100m
             memory: 200Mi
           requests:
             cpu: 100m
             memory: 200Mi
-        volumeMounts:
-        - name: ipdata # volumes.name 名称一致
-          mountPath: /work/data/ip.data # 落盘的文件名称
-          subPath: "ip.data"
-      volumes: # 挂载配置
-      - name: ipdata # ip 数据表格
-        configMap:
-          name: kube-box-ipdata # configmap.name
-          items:
-            - key: data-list
-              path: "ip.data"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-box-nodeport
+  namespace: default
+spec:
+  selector:
+    app: kube-box-nodeport
+  type: NodePort
+  ports:
+  - name: kube-box-nodeport
+    protocol: TCP
+    port: 9110
+    targetPort: http
+    # If you set the `spec.type` field to `NodePort` and you want a specific port number,
+    # you can specify a value in the `spec.ports[*].nodePort` field.
+    nodePort: 30008
