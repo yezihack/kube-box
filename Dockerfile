@@ -21,7 +21,7 @@ RUN go build -tags=jsoniter -ldflags "-s -w" -o kube-box .
 RUN go install github.com/davecheney/httpstat@latest
 RUN go install github.com/zu1k/nali@latest
 
-FROM sgfoot/busybox:v0.1.2 as runner
+FROM sgfoot/busybox:latest as runner
 
 WORKDIR /work
 

@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.7.0
+
+- Dockerfile 基本 busybox 包版本改为: latest
+- 新增 tcpdump 抓包工具
+
+## v0.6.0
+
+- 修改 busybox 版本 v0.1.2(新增 AB 压测工具)
+
 ## v0.5.0
 
 - 添加 [nali](https://github.com/zu1k/nali) 一个查询IP地理信息和CDN提供商的离线终端工具.
